@@ -1,0 +1,165 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  
+  /* RecruitFlow Custom Theme Tokens */
+  --color-canvas: var(--canvas);
+  --color-canvas-soft: var(--canvas-soft);
+  --color-surface-card: var(--surface-card);
+  --color-surface-strong: var(--surface-strong);
+  
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-muted-soft: var(--muted-soft);
+  
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-hairline-strong: var(--hairline-strong);
+  
+  --color-primary: var(--primary);
+  --color-primary-active: var(--primary-active);
+  --color-on-primary: var(--on-primary);
+  
+  --color-success: var(--success);
+  --color-error: var(--error);
+  
+  --color-timeline-analyzing: var(--timeline-analyzing);
+  --color-timeline-sourcing: var(--timeline-sourcing);
+  --color-timeline-matching: var(--timeline-matching);
+  --color-timeline-generating: var(--timeline-generating);
+  --color-timeline-complete: var(--timeline-complete);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+  
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-base: 16px;
+  --spacing-md: 20px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-section: 80px;
+
+  /* shadcn/ui mappings */
+  --color-card: var(--surface-card);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface-card);
+  --color-popover-foreground: var(--ink);
+  --color-secondary: var(--surface-strong);
+  --color-secondary-foreground: var(--ink);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--canvas-soft);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--error);
+  --color-destructive-foreground: var(--on-primary);
+}
+
+:root {
+  /* Warm cream editorial theme */
+  --background: #f7f7f4;
+  --foreground: #26251e;
+  
+  --canvas: #f7f7f4;
+  --canvas-soft: #fafaf7;
+  --surface-card: #ffffff;
+  --surface-strong: #e6e5e0;
+  
+  --ink: #26251e;
+  --body: #5a5852;
+  --muted: #807d72;
+  --muted-soft: #a09c92;
+  
+  --hairline: #e6e5e0;
+  --hairline-soft: #efeee8;
+  --hairline-strong: #cfcdc4;
+  
+  --primary: #f54e00;
+  --primary-active: #d04200;
+  --on-primary: #ffffff;
+  
+  --success: #1f8a65;
+  --error: #cf2d56;
+  
+  --timeline-analyzing: #dfa88f; /* peach */
+  --timeline-sourcing: #9fc9a2;  /* mint */
+  --timeline-matching: #9fbbe0;  /* blue */
+  --timeline-generating: #c0a8dd; /* lavender */
+  --timeline-complete: #c08532;   /* gold */
+  
+  /* shadcn/ui generic maps */
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--primary);
+  --radius: 12px; /* Base lg radius */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Scrollbar matching cream theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--canvas);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-strong);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-soft);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes pulsePill {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.animate-pulse-pill {
+  animation: pulsePill 2s infinite ease-in-out;
+}
